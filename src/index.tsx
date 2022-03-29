@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Paperbase from './Paperbase';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <Paperbase/>
   </React.StrictMode>,
   document.getElementById('root')
 );
