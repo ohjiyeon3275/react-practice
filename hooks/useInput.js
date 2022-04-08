@@ -1,9 +1,17 @@
 import React from "react";
 
-const useInput = (initValue) => {
+const useInput = (initValue, validator) => {
     const [value, setValue] = useState(initValue)
     const onChange = e => {
+        const {
+            target : { value }
+        } = e;
         console.log(e.target.value);
+        
+        let willUpdate = true;
+        if(willUpdate) {
+            setValue(value)
+        }
     }
     return { value, onChange }
 }

@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
 
@@ -14,7 +13,7 @@ function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+      Beautiful day! isnt it?
       </Link>{' '}
       {new Date().getFullYear()}.
     </Typography>
@@ -141,26 +140,7 @@ theme = {
         },
       },
     },
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: {
-          color: 'inherit',
-          minWidth: 'auto',
-          marginRight: theme.spacing(2),
-          '& svg': {
-            fontSize: 20,
-          },
-        },
-      },
-    },
-    MuiAvatar: {
-      styleOverrides: {
-        root: {
-          width: 32,
-          height: 32,
-        },
-      },
-    },
+    
   },
 };
 
