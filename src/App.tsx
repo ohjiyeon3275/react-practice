@@ -29,6 +29,9 @@ const getProducts = async (): Promise<CartItemType[]> =>
   // the reason why i put `await` twice : json
 
 const App = () => {
+
+  const [ cartOpen, setCartOpen ] = useState(false);
+  const [ cartItems, setCartItems ] = useState([] as CartItemType[]);
   const { data, isLoading, error } = useQuery<CartItemType[]>(
     'products', 
     getProducts
@@ -48,13 +51,16 @@ const App = () => {
 
   return (
     <Wrapper>
-      <Grid item container spacing={3}>
+      <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
+        Cart Goes Here~
+      </Drawer>
+      <Grid container spacing={3}>
         {data?.map(item => (
           <Grid item key={item.id} xs={12} sm={4}>
-            <Item item={item} handleAddToCart={handleAddToCart}/>
+            <Item item={item} handleAddToCart={handleAddToCart} />
           </Grid>
         ))}
-        </Grid>
+      </Grid>
     </Wrapper>
   );
 }
