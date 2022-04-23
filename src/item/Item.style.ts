@@ -14,12 +14,11 @@ export const Wrapper = styled.div`
   }
 
   img {
-    width:100px
     max-height: 250px;
     object-fit: cover;
     border-radius: 20px 20px 0 0;
   }
-
+  
   div {
     font-family: Arial, Helvetica, sans-serif;
     padding: 1rem;

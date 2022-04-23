@@ -47,7 +47,7 @@ const App = () => {
 
   if (isLoading) return <LinearProgress/>
 
-  if (error) return <div> something went wrong :( </div>
+  if (error) return <div> our mission was to graze the dust in search of a mystery stripped of anything serious </div>
 
   return (
     <Wrapper>
