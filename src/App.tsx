@@ -9,11 +9,12 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Badge from '@material-ui/core/Badge';
 
 //styles (styled component)
-import { Wrapper } from './App.styles';
-import Item from './item/Item';
+import { Wrapper, StyledButton } from './App.styles';
+import Item from './Item/Item';
+import Cart from './Cart/Cart'
 
 //Types
-export type CartItemType = {
+export interface CartItemType {
   id: number;
   category: string;
   description: string;
@@ -39,7 +40,9 @@ const App = () => {
 
   console.log(data)
 
-  const getTotalItems = () => null
+  const getTotalItems = (items: CartItemType[]) => {
+    items.reduce((ack: number, items) => ack + items.amount, 0);
+  }
 
   const handleAddToCart = (clickedItem: CartItemType) => null
 
@@ -52,8 +55,20 @@ const App = () => {
   return (
     <Wrapper>
       <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
-        Cart Goes Here~
+        <Cart 
+        cartItems={cartItems} 
+        addToCart={handleAddToCart} 
+        removeFromCart={handleRemoveFromCart}/>
       </Drawer>
+
+      <StyledButton onClick={ () => setCartOpen(true)} >
+        <Badge 
+        // badgeContent={ getTotalItems(cartItems) } 
+        color='error'>
+          <AddShoppingCartIcon />
+        </Badge>
+      </StyledButton>
+
       <Grid container spacing={3}>
         {data?.map(item => (
           <Grid item key={item.id} xs={12} sm={4}>
