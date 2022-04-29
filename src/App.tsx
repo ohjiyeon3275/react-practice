@@ -41,12 +41,12 @@ const App = () => {
   console.log(data)
 
   const getTotalItems = (items: CartItemType[]) => {
-    items.reduce((ack: number, items) => ack + items.amount, 0);
+    return items.reduce((ack: number, items) => ack + items.amount, 0);
   }
 
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems(prev => {
-      //1. is the item already add in the cart?
+      // 1. is the item already add in the cart?
       // if it is -> add number
       const isItemInCart = prev.find(item => item.id === clickedItem.id)
 
@@ -57,13 +57,24 @@ const App = () => {
             : item
         ))
       }
-      // otherwise.
 
+      // otherwise.
       return [...prev, { ...clickedItem, amount: 1}]
     })
   }
 
-  const handleRemoveFromCart = () => null
+  const handleRemoveFromCart = (id: number) => {
+    setCartItems( prev => (
+      prev.reduce((ack, item) => {
+        if( item. id === id ){
+          if( item.amount === 1) return ack;
+          return [...ack, { ...item, amount: item.amount -1 }]
+        } else {
+          return [...ack, item];
+        }      
+      }, [] as CartItemType[])
+    ))
+  }
 
   if (isLoading) return <LinearProgress/>
 
@@ -80,7 +91,7 @@ const App = () => {
 
       <StyledButton onClick={ () => setCartOpen(true)} >
         <Badge 
-          // badgeContent={ getTotalItems(cartItems) } 
+          badgeContent={getTotalItems(cartItems)} 
           color='error'>
           <AddShoppingCartIcon />
         </Badge>
