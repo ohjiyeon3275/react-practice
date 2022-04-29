@@ -10,8 +10,9 @@ type Props = {
     removeFromCart: (id: number) => void;
 }
 
-const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
+const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
     return (
+        <>
         <Wrapper>
             <h2>ur shopping cart</h2>
             {
@@ -22,10 +23,15 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
             {
                 cartItems.map(
                     item => (
-                        <CartItem/>
+                        <CartItem
+                            key={item.id}
+                            item={item}
+                            addToCart={addToCart}
+                            removeFromCart={removeFromCart}/>
                     ))
             }
         </Wrapper>
+        </>
     )
 
 }
